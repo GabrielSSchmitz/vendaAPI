@@ -21,6 +21,9 @@ export default class CreateProductService {
     if (productsExists)
       throw new AppError('Produto já existente com esse nome na base de dados');
 
+    if (price < 0)
+      throw new AppError('Preço do produto informado não pode ser negativo');
+
     const product = await productsRepository.create({
       name,
       price,
