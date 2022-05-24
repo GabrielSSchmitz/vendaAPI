@@ -9,7 +9,7 @@ export default class UserRepository extends Repository<User> {
    * @returns User | undefined
    */
   public async findByName(name: string): Promise<User | undefined> {
-    return this.findOne({
+    return await this.findOne({
       where: {
         name,
       },
@@ -22,7 +22,7 @@ export default class UserRepository extends Repository<User> {
    * @returns User | undefined
    */
   public async findByEmail(email: string): Promise<User | undefined> {
-    return this.findOne({
+    return await this.findOne({
       where: {
         email,
       },
@@ -35,7 +35,7 @@ export default class UserRepository extends Repository<User> {
    * @returns User | undefined
    */
   public async findById(id: string): Promise<User | undefined> {
-    return this.findOne({
+    return await this.findOne({
       where: {
         id,
       },

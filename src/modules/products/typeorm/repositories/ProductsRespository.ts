@@ -9,7 +9,7 @@ export default class ProductRepository extends Repository<Product> {
    * @returns Product | undefined
    */
   public async findByName(name: string): Promise<Product | undefined> {
-    return this.findOne({
+    return await this.findOne({
       where: {
         name,
       },
