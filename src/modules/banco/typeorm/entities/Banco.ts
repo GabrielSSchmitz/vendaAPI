@@ -6,19 +6,13 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('products')
-export default class Product {
+@Entity('bancos')
+export default class Banco {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
   name: string;
-
-  @Column('decimal')
-  price: number;
-
-  @Column('int')
-  quantity: number;
 
   @CreateDateColumn()
   created_at: Date;

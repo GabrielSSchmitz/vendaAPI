@@ -5,7 +5,9 @@ import UserRepository from '../typeorm/repositories/UsersRepositort';
 export default class ListUserService {
   public async execute(): Promise<User[]> {
     const usersRepository = getCustomRepository(UserRepository);
-    const Users = usersRepository.find();
+    const Users = usersRepository.find({
+      order: {name: 1}
+    });
 
     return Users;
   }

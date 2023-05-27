@@ -33,6 +33,21 @@ userRouter.patch(
   userAvatarController.update,
 );
 
+/**
+ * Envio de arquivo
+ */
+userRouter.patch(
+  '/update/:id',
+  celebrate({
+    [Segments.PARAMS]: { id: Joi.string().uuid().required() },
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      email: Joi.string().required(),
+    },
+  }),
+  userController.update,
+);
+
 userRouter.post(
   '/',
   celebrate({

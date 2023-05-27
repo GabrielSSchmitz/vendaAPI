@@ -1,5 +1,7 @@
 import { EntityRepository, Repository } from 'typeorm';
+import { Not } from "typeorm"
 import User from '../entities/User';
+import { override } from 'joi';
 
 @EntityRepository(User)
 export default class UserRepository extends Repository<User> {
@@ -29,6 +31,20 @@ export default class UserRepository extends Repository<User> {
     });
   }
 
+    /**
+   * Pesquisa pelo email menos o id informado
+   * @param email
+   * @returns User | undefined
+   */
+    public async findByEmailWithoutUser(email: string, id:string): Promise<User | undefined> {
+      return await this.findOne({
+        where: {
+          email,
+          id: Not(id)
+        },
+      });
+    }
+
   /**
    * Pesquisa pelo id
    * @param id
@@ -41,4 +57,6 @@ export default class UserRepository extends Repository<User> {
       },
     });
   }
+
+
 }
